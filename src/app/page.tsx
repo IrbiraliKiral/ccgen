@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { GeneratorForm } from "@/components/generator-form";
 import { CardDisplay } from "@/components/card-display";
 import { CreditCard } from "@/types/card";
@@ -8,6 +9,15 @@ import { generateCreditCards } from "@/helpers/card-generator";
 
 export default function Home() {
   const [generatedCards, setGeneratedCards] = useState<CreditCard[]>([]);
+  const searchParams = useSearchParams();
+  const [initialBin, setInitialBin] = useState<string>("");
+
+  useEffect(() => {
+    const binParam = searchParams.get("bin");
+    if (binParam) {
+      setInitialBin(binParam);
+    }
+  }, [searchParams]);
 
   function handleGenerate(data: {
     bin: string;
@@ -43,12 +53,12 @@ export default function Home() {
             Credit Card Generator
           </h1>
           <p className="text-muted-foreground">
-            
+            Generate valid credit card numbers for testing purposes
           </p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6 items-start justify-center">
-          <GeneratorForm onGenerate={handleGenerate} />
+          <GeneratorForm onGenerate={handleGenerate} initialBin={initialBin} />
           <CardDisplay cards={generatedCards} />
         </div>
       </div>

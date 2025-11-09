@@ -1,0 +1,61 @@
+{
+  "bins": [
+    {
+      "id": "1",
+      "bin": "552461",
+      "type": "Mastercard",
+      "bank": "MORGAN-STANLEY WORLD ELITE",
+      "country": "United States",
+      "successRate": 68,
+      "description": "Highest and the most reliable one on our platform.",
+      "services": [
+        {
+          "name": "Cursor",
+          "status": "working",
+          "lastChecked": "2025-11-09"
+        },
+        {
+          "name": "Github Copilot",
+          "status": "working",
+          "lastChecked": "2025-11-08"
+        },
+        {
+          "name": "Tabnine AI",
+          "status": "working",
+          "lastChecked": "2025-11-08"
+        },
+        {
+          "name": "Canva",
+          "status": "working",
+          "lastChecked": "2025-11-09"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "bin": "625201",
+      "type": "UnionPay",
+      "bank": "CHINA UNION PAY",
+      "country": "China",
+      "successRate": 40,
+      "description": "May not work in some places which don't accept China cards.",
+      "services": [
+        {
+          "name": "Cursor",
+          "status": "not_working",
+          "lastChecked": "2025-11-09"
+        },
+        {
+          "name": "Github Copilot",
+          "status": "working",
+          "lastChecked": "2025-11-08"
+        },
+        {
+          "name": "Tabnine AI",
+          "status": "working",
+          "lastChecked": "2025-11-07"
+        }
+      ]
+    }
+  ]
+}

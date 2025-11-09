@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,9 +19,10 @@ interface GeneratorFormProps {
     expirationMonth?: string;
     expirationYear?: string;
   }) => void;
+  initialBin?: string;
 }
 
-export function GeneratorForm({ onGenerate }: GeneratorFormProps) {
+export function GeneratorForm({ onGenerate, initialBin }: GeneratorFormProps) {
   const [bin, setBin] = useState("");
   const [quantity, setQuantity] = useState(10);
   const [customCvv, setCustomCvv] = useState(false);
@@ -30,6 +31,13 @@ export function GeneratorForm({ onGenerate }: GeneratorFormProps) {
   const [expirationMonth, setExpirationMonth] = useState("");
   const [expirationYear, setExpirationYear] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Set initial BIN if provided
+  useEffect(() => {
+    if (initialBin && !bin) {
+      setBin(initialBin);
+    }
+  }, [initialBin]);
 
   function validateForm(): boolean {
     const newErrors: Record<string, string> = {};
