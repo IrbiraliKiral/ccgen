@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { GeneratorForm } from "@/components/generator-form";
 import { CardDisplay } from "@/components/card-display";
 import { CreditCard } from "@/types/card";
 import { generateCreditCards } from "@/helpers/card-generator";
 
-export default function Home() {
+function HomeContent() {
   const [generatedCards, setGeneratedCards] = useState<CreditCard[]>([]);
   const searchParams = useSearchParams();
   const [initialBin, setInitialBin] = useState<string>("");
@@ -63,6 +63,22 @@ export default function Home() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={
+      <main className="min-h-screen bg-background py-12 px-4">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex items-center justify-center min-h-[400px]">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+          </div>
+        </div>
+      </main>
+    }>
+      <HomeContent />
+    </Suspense>
   );
 }
 

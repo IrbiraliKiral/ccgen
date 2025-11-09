@@ -37,7 +37,7 @@ export function GeneratorForm({ onGenerate, initialBin }: GeneratorFormProps) {
     if (initialBin && !bin) {
       setBin(initialBin);
     }
-  }, [initialBin]);
+  }, [initialBin, bin]);
 
   function validateForm(): boolean {
     const newErrors: Record<string, string> = {};
